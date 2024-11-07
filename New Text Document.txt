@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advertisement Page</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="ad-page" class="ad-page">
+        <div class="ad-space">Ad 1</div>
+        <div class="ad-space">Ad 2</div>
+        <div class="ad-space">Ad 3</div>
+        <div class="ad-space">Ad 4</div>
+        <p>Redirecting in <span id="timer">10</span> seconds...</p>
+    </div>
+
+    <script>
+        // Get the target URL from the query string
+        const urlParams = new URLSearchParams(window.location.search);
+        const targetLink = urlParams.get('url');
+
+        // Countdown timer
+        let timer = 10;
+        const interval = setInterval(() => {
+            timer--;
+            document.getElementById('timer').innerText = timer;
+            if (timer === 0) {
+                clearInterval(interval);
+                window.location.href = targetLink;
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
